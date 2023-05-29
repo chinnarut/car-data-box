@@ -1,0 +1,20 @@
+.dataList {
+    width: 100%;
+    margin-top: 20px;
+    padding: 30px;
+    display: flex;  
+    flex-direction: column;
+    gap: 25px;
+
+    .container-list {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-weight: bold;
+        background-color: crimson;
+        color: #fff;
+        font-size: 18px;
+        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+        padding: 10px;
+    }
+}

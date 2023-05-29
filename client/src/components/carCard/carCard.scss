@@ -1,0 +1,47 @@
+.carCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    padding: 10px;
+
+    span {
+      font-size: 16px;
+    }
+  }
+
+    .cellAction {
+      width: 20%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 5px;
+  
+      .deleteButton {
+        color: #fff;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: red;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+  
+      .editButton {
+        color: #fff;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: teal;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+    }
+}

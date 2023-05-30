@@ -17,7 +17,6 @@ const EditCar = () => {
   const [region, setRegion] = useState("central");
   const [choice, setChoice] = useState("pro");
   const [carType, setCarType] = useState("car");
-  console.log(car?._id)
 
 
   useEffect(() => {
@@ -36,7 +35,7 @@ const EditCar = () => {
   const handleEditCar = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`/cars/${car?._id}`, {
+      await axios.put(`/cars/${id}`, {
         carType,
         license,
         brand,
@@ -147,7 +146,7 @@ const EditCar = () => {
                   <option value="starter">Starter</option>
                 </select>
               </div>
-              <button onClick={handleEditCar}>Save</button>
+              <button type="submit" onClick={handleEditCar}>Save</button>
             </form>
           </div>
         </div>

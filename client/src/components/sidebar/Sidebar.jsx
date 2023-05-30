@@ -15,9 +15,9 @@ const Sidebar = () => {
   const { user } = useContext(UserContext);
 
   const handleLogout = async (e) => {
-    e.preventDefault();
     try {
       await axios.post("/auth/logout");
+      location.reload();
     } catch(err) {
       console.log(err);
     }

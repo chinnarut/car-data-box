@@ -2,8 +2,8 @@ import "./home.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Widget from "../../components/widget/Widget";
-import DataTable from "../../components/table/DataTable";
 import DataList from "../../components/dataList/DataList";
+import TableList from "../../components/tableList/TableList";
 
 const Home = () => {
   return (
@@ -15,9 +15,8 @@ const Home = () => {
           <Widget type={"cars"} />
         </div>
         <div className="listContainer">
-         
           <div className="dataListContainer">
-            <DataList />
+            <TableList />
           </div>
         </div>
       </div>

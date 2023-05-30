@@ -31,7 +31,7 @@ const CarCard = ({ license, carType, brand, model, owner, year, region, choice, 
         <span className="data">{choice}</span>
       </div>
       <div className="cellAction">
-        <Link to={user ? `edit/${id}` : "/login"}>
+        <Link to={user ? `/car/edit/${id}` : "/login"}>
           <button className="editButton">Edit</button>
         </Link>
         <Link to={user ? "/" : "/login"}>

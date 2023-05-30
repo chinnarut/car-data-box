@@ -36,7 +36,15 @@ const Login = () => {
     <div className="login">
       <Link 
         to={"/"} 
-        style={{margin: "20px", color: 'inherit', textDecoration: "none"}}
+        style={{
+          width: "28%",
+          margin: "20px", 
+          color: 'inherit', 
+          textDecoration: "none",
+          fontSize: "30px",
+          color: "green",
+          fontWeight: "bold"
+        }}
       >
         Home
       </Link>

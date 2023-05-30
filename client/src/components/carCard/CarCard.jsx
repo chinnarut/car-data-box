@@ -9,9 +9,10 @@ const CarCard = ({ license, carType, brand, model, owner, year, region, choice, 
   console.log(id)
 
   const handleDelete = async (e) => {
-    e.preventDefault();
     try {
-      await axios.delete(`/cars/${id}`);
+      if(user) {
+        await axios.delete(`/cars/${id}`);
+      }
     } catch(err) {
       console.log(err);
     }
@@ -33,12 +34,14 @@ const CarCard = ({ license, carType, brand, model, owner, year, region, choice, 
         <Link to={user ? `edit/${id}` : "/login"}>
           <button className="editButton">Edit</button>
         </Link>
-        <button 
-          className="deleteButton"
-          onClick={handleDelete}
-        >
-          Delete
-        </button>
+        <Link to={user ? "/" : "/login"}>
+          <button
+            className="deleteButton"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+        </Link>
       </div>
     </div>
   )

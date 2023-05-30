@@ -48,13 +48,13 @@ router.post("/login", async (req,res) => {
       res.status(422).json('pass not ok');
     }
   } else {
-    res.json("User not found...");
+    res.status(500).json(false)
   }
 });
 
 router.post("/logout", (req, res) => {
   mongoose.connect(process.env.MONGO_KEY);
-  res.cookie("token", "").json("User logout");
+  res.cookie("token", "").json(false);
 })
 
 

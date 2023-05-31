@@ -44,16 +44,30 @@ router.put("/:id", async (req, res) => {
   try {
     jwt.verify(token, process.env.JWT_PASS, {}, async (err, carData) => {
       const carDoc = await Car.findById(id);
-      carDoc.set({
-        carType,
-        license,
-        brand,
-        model,
-        year,
-        owner,
-        region,
-        choice
-      });
+      if(carType) {
+        carDoc.carType = carType;
+      } 
+      if(license) {
+        carDoc.license = license;
+      }
+      if (brand) {
+        carDoc.brand = brand;
+      }
+      if (model) {
+        carDoc.model = model;
+      }
+      if (year) {
+        carDoc.year = year;
+      }
+      if (owner) {
+        carDoc.owner = owner;
+      }
+      if (region) {
+        carDoc.region = region;
+      }
+      if (choice) {
+        carDoc.choice = choice;
+      }
 
       carDoc.save();
       res.json(carDoc);

@@ -14,10 +14,9 @@ const EditCar = () => {
   const [model, setModel] = useState("");
   const [year, setYear] = useState("");
   const [owner, setOwner] = useState("");
-  const [region, setRegion] = useState("central");
-  const [choice, setChoice] = useState("pro");
-  const [carType, setCarType] = useState("car");
-
+  const [region, setRegion] = useState("");
+  const [choice, setChoice] = useState("");
+  const [carType, setCarType] = useState("");
 
   useEffect(() => {
     const getCar = async () => {
@@ -34,8 +33,9 @@ const EditCar = () => {
 
   const handleEditCar = async (e) => {
     e.preventDefault();
+
     try {
-      await axios.put(`/cars/${id}`, {
+      const dataUpdated = await axios.put(`/cars/${id}`, {
         carType,
         license,
         brand,
@@ -54,6 +54,8 @@ const EditCar = () => {
       setRegion("central");
       setChoice("pro");
       setCarType("car");
+
+      console.log(dataUpdated)
     } catch (err) {
       console.log(err);
     }
@@ -74,6 +76,7 @@ const EditCar = () => {
                 <label>License</label>
                 <input
                   type="text"
+                  required="required"
                   value={license}
                   onChange={(e) => setLicense(e.target.value)}
                   placeholder={car?.license} />
@@ -82,6 +85,7 @@ const EditCar = () => {
                 <label>Brand</label>
                 <input
                   type="text"
+                  required="required"
                   value={brand}
                   onChange={(e) => setBrand(e.target.value)}
                   placeholder={car?.brand}
@@ -91,6 +95,7 @@ const EditCar = () => {
                 <label>Model</label>
                 <input
                   type="text"
+                  required="required"
                   value={model}
                   onChange={(e) => setModel(e.target.value)}
                   placeholder={car?.model}
@@ -100,6 +105,7 @@ const EditCar = () => {
                 <label>Year</label>
                 <input
                   type="text"
+                  required="required"
                   value={year}
                   onChange={(e) => setYear(e.target.value)}
                   placeholder={car?.year}
@@ -109,41 +115,45 @@ const EditCar = () => {
                 <label>Owner</label>
                 <input
                   type="text"
+                  required="required"
                   value={owner}
                   onChange={(e) => setOwner(e.target.value)}
                   placeholder={car?.owner}
                 />
               </div>
               <div className="formInput">
-                <label>Car Type</label>
+                <label htmlFor="carType">Car Type</label>
                 <select
+                  required="required"
                   onChange={(e) => setCarType(e.target.value)}
                 >
-                  <option value="car">Car</option>
-                  <option value="electric">Electric Car</option>
-                  <option value="scooter">Scooter</option>
+                  <option value="Car">Car</option>
+                  <option value="Electric">Electric Car</option>
+                  <option value="Scooter">Scooter</option>
                 </select>
               </div>
               <div className="formInput">
-                <label>Region</label>
+                <label htmlFor="egion">Region</label>
                 <select
+                  required="required"
                   onChange={(e) => setRegion(e.target.value)}
                 >
-                  <option value="central">Central</option>
-                  <option value="northern">Northern</option>
-                  <option value="northeastern">Northeastern</option>
-                  <option value="western">Western</option>
+                  <option value="Central">Central</option>
+                  <option value="Northern">Northern</option>
+                  <option value="Northeastern">Northeastern</option>
+                  <option value="Western">Western</option>
                   <option value="Eastern">Eastern</option>
-                  <option value="southern">Southern</option>
+                  <option value="Southern">Southern</option>
                 </select>
               </div>
               <div className="formInput">
-                <label>Choice</label>
+                <label htmlFor="choice">Package</label>
                 <select
+                  required="required"
                   onChange={(e) => setChoice(e.target.value)}
                 >
-                  <option value="pro">Pro</option>
-                  <option value="starter">Starter</option>
+                  <option value="Pro">Pro</option>
+                  <option value="Starter">Starter</option>
                 </select>
               </div>
               <button type="submit" onClick={handleEditCar}>Save</button>

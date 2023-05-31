@@ -6,7 +6,6 @@ import axios from "axios";
 
 const CarCard = ({ license, carType, brand, model, owner, year, region, choice, id }) => {
   const { user } = useContext(UserContext);
-  console.log(id)
 
   const handleDelete = async (e) => {
     try {

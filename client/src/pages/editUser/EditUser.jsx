@@ -4,27 +4,36 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import "./editUser.scss";
 import axios from "axios";
 import { UserContext } from "../../UserContext";
+import { Navigate } from "react-router-dom";
 
 const EditUser = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const { user } = useContext(UserContext);
 
   const handleEditUser = async (e) => {
-    e.preventDefault();
     try {
       await axios.put(`/users/${user?.id}`, {
         username,
-        email
+        email,
+        password
       });
 
       setUsername("");
       setEmail("");
+      setPassword("");
+      setRedirect(true);
     } catch(err) {
       console.log(err);
     }
   }
+
+  if (redirect) {
+    return <Navigate to={"/"} />
+  };
 
   return (
     <div className="editUser">
@@ -55,7 +64,20 @@ const EditUser = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <button onClick={handleEditUser}>Save</button>
+              <div className="formInput">
+                <label>Password</label>
+                <input
+                  type="password"
+                  value={password}
+                  placeholder={"Your new password"}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <button 
+                onClick={handleEditUser}
+              >
+                Save
+              </button>
             </form>
           </div>
         </div>

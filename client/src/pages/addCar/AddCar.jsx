@@ -4,6 +4,7 @@ import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./addCar.scss";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const AddCar = () => {
   const { user } = useContext(UserContext);
@@ -15,6 +16,7 @@ const AddCar = () => {
   const [region, setRegion] = useState("central");
   const [choice, setChoice] = useState("pro");
   const [carType, setCarType] = useState("car");
+  const [redirect, setRedirect] = useState(false);
 
   const handleAddCar = async (e) => {
     e.preventDefault();
@@ -38,10 +40,15 @@ const AddCar = () => {
       setRegion("central");
       setChoice("pro");
       setCarType("car");
+      setRedirect(true);
     } catch (err) {
       console.log(err);
     }
   }
+
+  if (redirect) {
+    return <Navigate to={"/"} />
+  };
 
   return (
     <div className="addCar">

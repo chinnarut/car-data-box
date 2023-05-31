@@ -8,22 +8,37 @@ const mongoose = require("mongoose");
 
 router.put("/:id", async (req, res) => {
   mongoose.connect(process.env.MONGO_KEY);
+  const { token } = req.cookies;
+  const { id } = req.params;
+  const {
+    username,
+    email,
+    password
+  } = req.body;
+
   if (req.body.password) {
     req.body.password = bcrypt.hashSync(password, bcryptSalt);
   }
 
   try {
-    const updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: req.body,
-      },
-      { new: true }
-    );
-    res.status(200).json(updatedUser);
+    jwt.verify(token, process.env.JWT_PASS, {}, async (err, userData) => {
+      const userDoc = await User.findById(id);
+      if (username) {
+        userDoc.username = username;
+      }
+      if (email) {
+        userDoc.email = email;
+      }
+      if (password) {
+        userDoc.password = req.body.password;
+      };
+
+      userDoc.save();
+      res.status(200).json(userDoc);
+    })
   } catch (err) {
-    res.status(500).json(err);
-  }
+    res.status(500);
+  };
 });
 
 router.delete("/:id", async (req, res) => {

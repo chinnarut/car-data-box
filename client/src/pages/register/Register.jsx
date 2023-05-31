@@ -1,11 +1,13 @@
 import { useState } from "react";
 import "./register.scss";
 import axios from "axios";
+import { Link, Navigate } from "react-router-dom";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -19,13 +21,34 @@ const Register = () => {
       setUsername("")
       setEmail("")
       setPassword("")
+      setRedirect(true);
     } catch(err) {
       console.log(err);
     }
   };
 
+  if(redirect) {
+    return <Navigate to="/" />
+  }
+
   return (
     <div className="register">
+      <Link
+        to={"/"}
+        style={{
+          position: "absolute",
+          top: "0",
+          width: "100%",
+          margin: "20px",
+          padding: "20px",
+          textDecoration: "none",
+          fontSize: "30px",
+          color: "green",
+          fontWeight: "bold"
+        }}
+      >
+        Home
+      </Link>
       <div className="wrapper">
         <h1>Create Account</h1>
         <form>

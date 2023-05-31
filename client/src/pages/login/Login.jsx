@@ -30,16 +30,18 @@ const Login = () => {
 
   if(redirect) {
     return <Navigate to={"/"} />
-  }
+  };
 
   return (
     <div className="login">
       <Link 
         to={"/"} 
         style={{
-          width: "28%",
+          position: "absolute",
+          top: "0",
+          width: "100%",
           margin: "20px", 
-          color: 'inherit', 
+          padding: "20px",
           textDecoration: "none",
           fontSize: "30px",
           color: "green",

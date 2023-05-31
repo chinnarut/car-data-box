@@ -17,9 +17,6 @@ const TableList = () => {
     fetchData();
   }, []);
 
-  console.log(carData)
-
-
   return (
     <div className="TableList">
       <div className="container-list">

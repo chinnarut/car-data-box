@@ -13,6 +13,9 @@ const Home = () => {
         <Navbar />
         <div className="widgets">
           <Widget type={"cars"} />
+          <Widget type={"car"} />
+          <Widget type={"electric"} />
+          <Widget type={"scooter"} />
         </div>
         <div className="listContainer">
           <div className="dataListContainer">

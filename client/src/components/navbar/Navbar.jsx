@@ -20,7 +20,10 @@ const Navbar = () => {
           <div className="item">
             <Link
               to={user ? "/user/edit" : "/login"}
-              style={{ textDecoration: "none", color: "inherit" }}
+              style={{ 
+                textDecoration: "none", 
+                color: "inherit" 
+              }}
             >
               <AccountCircleOutlinedIcon className="avatar" />
             </Link>
@@ -30,7 +33,10 @@ const Navbar = () => {
                 <div className="auth">
                 <Link
                   to="/signup"
-                  style={{ textDecoration: "none", color: "inherit" }}
+                  style={{ 
+                    textDecoration: "none", 
+                    color: "inherit" 
+                  }}
                 >
                   <div className="signup">Sign Up</div>
                 </Link>

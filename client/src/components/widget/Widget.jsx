@@ -19,13 +19,10 @@ const Widget = ({ type }) => {
     getData();
   }, []);
 
-  
-
   switch(type) {
     case "cars":
         data = {
           title: "ALL CARS",
-          link: "See all cars",
           count: carData?.length,
           icon: (
             <GarageOutlinedIcon 
@@ -41,7 +38,7 @@ const Widget = ({ type }) => {
     case "car":
         data = {
           title: "CAR",
-          link: "See cars",
+          count: carData?.filter(car => car.carType === "car").length,
           icon: (
             <DirectionsCarFilledOutlinedIcon 
               className="icon" 
@@ -56,7 +53,7 @@ const Widget = ({ type }) => {
     case "electric":
         data = {
           title: "ELECTRIC CAR",
-          link: "See electric cars",
+          count: carData?.filter(electric => electric.carType === "electric").length,
           icon: (
             <ElectricCarOutlinedIcon 
               className="icon" 
@@ -71,7 +68,7 @@ const Widget = ({ type }) => {
     case "scooter":
         data = {
           title: "SCOOTER",
-          link: "See scooters",
+          count: carData?.filter(scooter => scooter.carType === "scooter").length,
           icon: (
             <ElectricScooterOutlinedIcon 
               className="icon" 

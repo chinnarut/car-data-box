@@ -23,7 +23,7 @@ function App() {
           <Route path="user/edit" element={<EditUser />} />
           <Route path="car">
             <Route index element={<List />} />
-            <Route path="add" element={<AddCar />} />
+            <Route path="edit" element={<AddCar />} />
             <Route path="edit/:carId" element={<EditCar />} />
           </Route>
         </Route>

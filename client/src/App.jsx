@@ -18,12 +18,12 @@ function App() {
       <Routes>
         <Route path="/">
           <Route index element={<Home />} />
-          <Route path="/signup" element={<Register />} />
+          <Route path="signup" element={<Register />} />
           <Route path="login" element={<Login />} />
-          <Route path="/user/edit" element={<EditUser />} />
-          <Route path="/car" element={<List />} />
-          <Route path="/car/edit" element={<AddCar />} />
-          <Route path="/car/edit/:carId" element={<EditCar />} />
+          <Route path="user/edit" element={<EditUser />} />
+          <Route path="car" element={<List />} />
+          <Route path="car/edit" element={<AddCar />} />
+          <Route path="car/edit/:carId" element={<EditCar />} />
         </Route>
       </Routes>
     </UserContextProvider>

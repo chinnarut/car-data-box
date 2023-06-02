@@ -18,13 +18,13 @@ function App() {
       <Routes>
         <Route path="/">
           <Route index element={<Home />} />
-          <Route path="signup" element={<Register />} />
-          <Route path="login" element={<Login />} />
-          <Route path="user/edit" element={<EditUser />} />
-          <Route path="car">
-            <Route index element={<List />} />
-            <Route path="edit" element={<AddCar />} />
-            <Route path="edit/:carId" element={<EditCar />} />
+          <Route path="/signup" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/user/edit" element={<EditUser />} />
+          <Route exect path="/car">
+            <Route element={<List />} />
+            <Route path="/edit" element={<AddCar />} />
+            <Route path="/edit/:carId" element={<EditCar />} />
           </Route>
         </Route>
       </Routes>

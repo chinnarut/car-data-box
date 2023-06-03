@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./editUser.scss";
@@ -11,12 +11,24 @@ const EditUser = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
-
+  const [userData, setUserData] = useState(null);
   const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.get(`/users/find/${user?.id}`);
+      setUserData(res?.data);
+    }
+
+    fetchData();
+  }, [user?.id]);
+
+  console.log(userData)
+  console.log(redirect)
 
   const handleEditUser = async (e) => {
     try {
-      await axios.put(`/users/${user?.id}`, {
+      await axios.put(`/users/${userData?._id}`, {
         username,
         email,
         password
@@ -31,9 +43,9 @@ const EditUser = () => {
     }
   }
 
-  if(redirect) {
+  if(redirect || !user) {
     return <Navigate to={"/"} />
-  };
+  }
 
   return (
     <div className="editUser">
@@ -51,7 +63,7 @@ const EditUser = () => {
                 <input 
                   type="text" 
                   value={username}
-                  placeholder={user?.username} 
+                  placeholder={userData?.username} 
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
@@ -60,7 +72,7 @@ const EditUser = () => {
                 <input 
                   type="email" 
                   value={email}
-                  placeholder={user?.email}
+                  placeholder={userData?.email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>

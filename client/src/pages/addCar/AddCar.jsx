@@ -46,7 +46,7 @@ const AddCar = () => {
     }
   }
 
-  if (redirect) {
+  if (redirect || !user) {
     return <Navigate to={"/"} />
   };
 

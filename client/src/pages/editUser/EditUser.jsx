@@ -31,7 +31,7 @@ const EditUser = () => {
     }
   }
 
-  if (redirect) {
+  if(redirect) {
     return <Navigate to={"/"} />
   };
 

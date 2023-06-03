@@ -21,8 +21,8 @@ function App() {
           <Route path="signup" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="user/edit" element={<EditUser />} />
-          <Route exect path="car">
-            <Route element={<List />} />
+          <Route path="/car">
+            <Route index element={<List />} />
             <Route path="edit" element={<AddCar />} />
             <Route path="edit/:carId" element={<EditCar />} />
           </Route>

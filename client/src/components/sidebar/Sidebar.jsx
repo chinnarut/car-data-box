@@ -6,21 +6,27 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 import HandshakeOutlinedIcon from '@mui/icons-material/HandshakeOutlined';
-import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { Link, Navigate } from "react-router-dom";
+import { useContext, useState } from "react";
 import { UserContext } from "../../UserContext";
 import axios from "axios";
 
 const Sidebar = () => {
   const { user } = useContext(UserContext);
+  const [redirect, setRedirect] = useState(false);
 
   const handleLogout = async (e) => {
     try {
       await axios.post("/auth/logout");
       location.reload();
+      setRedirect(true);
     } catch(err) {
       console.log(err);
     }
+  }
+
+  if(redirect) {
+    return <Navigate to="/" />
   }
   
   return (

@@ -25,7 +25,7 @@ const Sidebar = () => {
     }
   }
 
-  if(redirect || !user ) {
+  if(redirect) {
     return <Navigate to="/" />
   }
   
